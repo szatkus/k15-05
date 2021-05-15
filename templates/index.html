@@ -1,0 +1,24 @@
+<style>
+  ul {
+    list-style-type: none;
+  }
+
+  .question {
+    margin-left: 40px;
+  }
+</style>
+
+<form method="post" action="/submit">
+{% for question in questions %}
+  <div class="question">{{question.text}}</div>
+  <ul>
+    {% for answer in question.answers %}
+      <li>
+        <input type="radio" name="answer-{{ question.id }}" value="{{ answer.id }}">
+        <label for="answer-{{ question.id }}">{{ answer.text}}</label>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+<input type="submit" value="Odpowiedz">
+</form>
